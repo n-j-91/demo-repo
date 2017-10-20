@@ -1,5 +1,5 @@
 name 'demo-site'
-maintainer 'The Authors'
+maintainer 'Nayanajith Chandradasa'
 maintainer_email 'you@example.com'
 license 'All Rights Reserved'
 description 'Installs/Configures demo-site'
