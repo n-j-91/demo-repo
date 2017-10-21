@@ -6,7 +6,7 @@ doc_root = node['demo_site']['doc_root']
 build_archive = node['demo_site']['build_name']
 build_src = node['demo_site']['build_loc']+"/#{build_archive}"
 
-service 'start-daemon' do
+service 'start-demo' do
     action [ :disable, :stop ]
     retries 3
 end
@@ -26,7 +26,7 @@ bash 'deploy_code' do
     action :run
 end
 
-service 'start-daemon' do
+service 'start-demo' do
     action [ :enable, :start ]
     retries 3
 end
