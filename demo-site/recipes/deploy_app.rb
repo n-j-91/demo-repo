@@ -13,7 +13,7 @@ bash 'deploy_code' do
     deploymentTime=$(date +"%Y%m%d%H%M%S")
     mkdir -p #{release_dir}/$deploymentTime
     aws s3 cp #{build_src} #{release_dir}/$deploymentTime/
-    tar -zxvf #{release_dir}/$deploymentTime/#{build_arc}
+    tar -zxvf #{release_dir}/$deploymentTime/#{build_archive}
     rm -f #{release_dir}/$deploymentTime/#{build_archive}
     ln -s #{release_dir}/$deploymentTime/ #{doc_root}
     EOH
