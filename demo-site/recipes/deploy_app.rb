@@ -15,7 +15,7 @@ bash 'deploy_code' do
     aws s3 cp #{build_src} #{release_dir}/$deploymentTime/
     tar -zxvf #{release_dir}/$deploymentTime/#{build_archive}
     rm -f #{release_dir}/$deploymentTime/#{build_archive}
-    ln -s #{release_dir}/$deploymentTime/ #{doc_root}
+    ln -sf #{release_dir}/$deploymentTime/ #{doc_root}
     EOH
     action :run
 end
