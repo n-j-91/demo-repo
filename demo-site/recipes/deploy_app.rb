@@ -10,7 +10,7 @@ bash 'deploy_code' do
     code <<-EOH
     deploymentTime=$(date +"%Y%m%d%H%M%S")
     mkdir -p #{release_dir}/$deploymentTime
-    aws s3 cp #{build} #{release_dir}/$deploymentTime
+    aws s3 cp #{build} #{release_dir}/$deploymentTime/
     EOH
     action :run
 end
