@@ -6,9 +6,11 @@ doc_root = node['demo_site']['doc_root']
 build_archive = node['demo_site']['build_name']
 build_src = node['demo_site']['build_loc']+"/#{build_archive}"
 
-service 'start-demo' do
-    action [ :disable, :stop ]
-    retries 3
+execute 'stop_service' do
+    cwd "/tmp"
+    user "root"
+    command '/etc/init.d/start-demo stop'
+    action :run
 end
 
 bash 'deploy_code' do
@@ -26,7 +28,9 @@ bash 'deploy_code' do
     action :run
 end
 
-service 'start-demo' do
-    action [ :enable, :start ]
-    retries 3
+execute 'stop_service' do
+    cwd "/tmp"
+    user "root"
+    command '/etc/init.d/start-demo start'
+    action :run
 end
