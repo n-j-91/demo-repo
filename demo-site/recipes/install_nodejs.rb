@@ -1,5 +1,5 @@
 #Author Nayanajith Chandradasa
-#This receipe will do the installation tasks for demo-site
+#This receipe will do the pre-deployment tasks for demo-site
 
 execute 'get_nodejs' do
         cwd "/tmp"
