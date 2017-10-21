@@ -2,7 +2,9 @@
 #This receipe will do the the code deployment for demo-site
 
 release_dir = node['demo_site']['release_home']
-build = node['demo_site']['build_loc']+"/"+node['demo_site']['build_name']
+doc_root = node['demo_site']['doc_root']
+build_archive = node['demo_site']['build_name']
+build_src = node['demo_site']['build_loc']+"/#{build_archive}"
 
 bash 'deploy_code' do
     cwd "/tmp"
@@ -10,7 +12,11 @@ bash 'deploy_code' do
     code <<-EOH
     deploymentTime=$(date +"%Y%m%d%H%M%S")
     mkdir -p #{release_dir}/$deploymentTime
-    aws s3 cp #{build} #{release_dir}/$deploymentTime/
+    aws s3 cp #{build_src} #{release_dir}/$deploymentTime/
+    tar -zxvf #{release_dir}/$deploymentTime/#{build_arc}
+    rm -f #{release_dir}/$deploymentTime/#{build_archive}
+    ln -s #{release_dir}/$deploymentTime/ #{doc_root}
     EOH
     action :run
 end
+
