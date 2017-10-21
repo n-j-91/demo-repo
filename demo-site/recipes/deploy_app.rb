@@ -6,7 +6,7 @@ build = node['demo_site']['build_loc']+"/"+node['demo_site']['build_name']
 
 bash 'deploy_code' do
     cwd "/tmp"
-    user "/root"
+    user "root"
     code <<-EOH
     deploymentTime=$(date +"%Y%m%d%H%M%S")
     mkdir -p #{release_dir}/$deploymentTime
