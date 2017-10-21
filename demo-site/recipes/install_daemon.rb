@@ -11,6 +11,6 @@ end
 execute 'enable_daemon' do
     cwd "/tmp"
     user "root"
-    command 'chkconfig --level 345 start-demo'
+    command 'chkconfig --level 345 start-demo on'
     action :run
 end
